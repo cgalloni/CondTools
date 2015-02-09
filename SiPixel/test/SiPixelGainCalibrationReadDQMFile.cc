@@ -565,7 +565,7 @@ SiPixelGainCalibrationReadDQMFile::getHistograms(){
   std::cout <<"now parsing file " << rootfilestring_ << std::endl;
   therootfile_ = new TFile(rootfilestring_.c_str());
   therootfile_->cd();
-  std::cout <<"now opening file "  << std::endl;
+
   //TDirectory *dir = therootfile_->GetDirectory("DQMData");
   TDirectory *dir = therootfile_->GetDirectory("siPixelGainCalibrationAnalysis");
   TList *list = dir->GetListOfKeys();
@@ -579,7 +579,7 @@ SiPixelGainCalibrationReadDQMFile::getHistograms(){
   std::vector<int> nsubdirs;
   int ikey=0;
   int num_dir_list=list->GetEntries() ;
-  std::cout << "number of keys"<< list->GetEntries();
+
   
   for(ikey=0;ikey<num_dir_list;  ikey++){
     TKey *thekey = (TKey*)list->At(ikey);
@@ -589,7 +589,7 @@ SiPixelGainCalibrationReadDQMFile::getHistograms(){
     TString keytype=thekey->GetClassName();
     //    if(keyname=="EventInfo")
     //      continue;
-    std::cout <<  keytype << " " << keyname << std::endl;
+  
     if(keytype=="TDirectoryFile"){
       TString dirname=dir->GetPath();
       dirname+="/";
